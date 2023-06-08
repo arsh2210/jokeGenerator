@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <span>&#128514;</span>
+        <p id="joke"></p>
+        <button id="btn">Get Random Joke</button>
+    </div>
+
+    <title>Joke API</title>
+    
+  <div class="form-container">
+      <h2>Registration Form</h2>
+      <form id="registration-form">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Register">
+      </form>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+    <script>
+    const formE1 = document.querySelector('.form');
+    const data=new URLSearchParams(formData);
+    formE1.addEventListener('submit',event=> {
+        event.preventDefault();
+         const formData =new formData(formE1);
+        //  formData.get('username');
+        fetch('https://reqres.in/api/users',{
+            method:'POST',
+            // headers:{
+            //     'Content-Type':'application/x-www-form-urlencoded'
+
+            // },
+            body:data
+        }).then(res =>res.json())
+        .then(data=>console.log(data))
+        .catch(error=>console.log(error));
+
+    });
+  </script>
+</body>
+</html>
